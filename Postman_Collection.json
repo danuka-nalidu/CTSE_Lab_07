@@ -1,0 +1,114 @@
+{
+  "info": {
+    "name": "Event-Driven Microservices Lab",
+    "description": "Test collection for Kafka-based microservices",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Order",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"orderId\":\"ORD-1001\",\"item\":\"Laptop\",\"quantity\":1,\"amount\":1299.99}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/orders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["orders"]
+        },
+        "description": "Create a new order and publish event to Kafka"
+      },
+      "response": []
+    },
+    {
+      "name": "Create Order - iPhone",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"orderId\":\"ORD-1002\",\"item\":\"iPhone 15\",\"quantity\":2,\"amount\":1598.98}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/orders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["orders"]
+        },
+        "description": "Create another order - iPhone"
+      },
+      "response": []
+    },
+    {
+      "name": "Create Order - Monitor",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"orderId\":\"ORD-1003\",\"item\":\"4K Monitor\",\"quantity\":1,\"amount\":499.99}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/orders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["orders"]
+        },
+        "description": "Create another order - Monitor"
+      },
+      "response": []
+    },
+    {
+      "name": "Check Order Service Health",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8081/actuator/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["actuator", "health"]
+        },
+        "description": "Check if Order Service is healthy"
+      },
+      "response": []
+    },
+    {
+      "name": "Check API Gateway Health",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/actuator/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["actuator", "health"]
+        },
+        "description": "Check if API Gateway is healthy"
+      },
+      "response": []
+    }
+  ]
+}

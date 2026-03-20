@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      routes:
+        - id: order-service
+          uri: ${ORDER_SERVICE_URI:https://order-service.internal.proudbush-b4fa9af7.southeastasia.azurecontainerapps.io}
+          predicates:
+            - Path=/orders/**
